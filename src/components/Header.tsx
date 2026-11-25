@@ -12,7 +12,7 @@ const links = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   return <header className="site-header">
-    <Link to="/" className="brand" onClick={() => setOpen(false)}>
+    <Link to="/" className="brand" aria-label="Под Давлением — на главную" onClick={() => { setOpen(false); window.scrollTo({ top: 0, left: 0, behavior: "smooth" }); }}>
       <span className="brand-mark"><Gauge size={25}/></span>
       <span><b>Под <i>Давлением</i></b><small>ШИНОМОНТАЖ В МОСКВЕ</small></span>
     </Link>

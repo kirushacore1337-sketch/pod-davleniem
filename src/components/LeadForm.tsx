@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { sendLead } from "../lib/api";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { LoaderCircle, Send, ShieldCheck } from "lucide-react";
 
 const SERVICE_OPTIONS = [
@@ -58,10 +58,7 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
       <label>Удобное время<input name="preferredTime" type="time"/></label>
       <label className="full-field">Комментарий<textarea name="comment" rows={3} placeholder="Дополнительная информация" maxLength={1000}/></label>
     </div>
-    <label className="consent">
-      <input name="consent" type="checkbox" required />
-      <span>Я согласен(на) на обработку персональных данных согласно политике конфиденциальности.</span>
-    </label>
+    <label className="consent"><input name="consent" type="checkbox" required/><span>Даю согласие на обработку указанных мной персональных данных для рассмотрения заявки и связи со мной. <Link to="/privacy">Политика обработки персональных данных</Link>.</span></label>
     {error && <p className="form-error" role="alert">{error}</p>}
     <button className="button button-primary" disabled={busy}>{busy ? <LoaderCircle className="spin"/> : <Send size={17}/>} {busy ? "Отправляем..." : "Отправить заявку"}</button>
     <p className="form-note">Отправка заявки не является автоматическим подтверждением записи.</p>
