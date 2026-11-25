@@ -351,3 +351,36 @@ body {
   .benefits-section .benefit h3 { font-size: 19px; }
   .benefits-section .benefit p { font-size: 15px; line-height: 1.68; }
 }
+
+/* Согласие на обработку персональных данных: чекбокс и текст в одной строке. */
+.lead-form label.consent {
+  display: grid !important;
+  grid-template-columns: 18px minmax(0, 1fr);
+  align-items: start !important;
+  justify-content: start;
+  gap: 10px !important;
+  width: 100%;
+}
+
+.lead-form label.consent > input[type="checkbox"] {
+  appearance: auto;
+  -webkit-appearance: checkbox;
+  display: block;
+  width: 18px !important;
+  min-width: 18px;
+  height: 18px !important;
+  min-height: 18px !important;
+  margin: 2px 0 0 !important;
+  padding: 0 !important;
+  flex: none !important;
+  align-self: start;
+  cursor: pointer;
+}
+
+.lead-form label.consent > span {
+  display: block;
+  min-width: 0;
+  margin: 0;
+  line-height: 1.55;
+  font-weight: 500;
+}

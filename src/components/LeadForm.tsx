@@ -58,7 +58,10 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
       <label>Удобное время<input name="preferredTime" type="time"/></label>
       <label className="full-field">Комментарий<textarea name="comment" rows={3} placeholder="Дополнительная информация" maxLength={1000}/></label>
     </div>
-    <label className="consent"><input name="consent" type="checkbox" required/> Я согласен(на) на обработку персональных данных согласно политике конфиденциальности.</label>
+    <label className="consent">
+      <input name="consent" type="checkbox" required />
+      <span>Я согласен(на) на обработку персональных данных согласно политике конфиденциальности.</span>
+    </label>
     {error && <p className="form-error" role="alert">{error}</p>}
     <button className="button button-primary" disabled={busy}>{busy ? <LoaderCircle className="spin"/> : <Send size={17}/>} {busy ? "Отправляем..." : "Отправить заявку"}</button>
     <p className="form-note">Отправка заявки не является автоматическим подтверждением записи.</p>
