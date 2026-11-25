@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X, Phone, CalendarDays, Gauge } from "lucide-react";
+import { CONTACTS } from "../config/contacts";
 
 const links = [
   ["Главная", "/"], ["Услуги", "/services"], ["Цены", "/prices"],
@@ -20,10 +21,10 @@ export default function Header() {
     </button>
     <nav className={open ? "main-nav is-open" : "main-nav"}>
       {links.map(([label, path]) => <NavLink key={path} to={path} end={path === "/"} onClick={() => setOpen(false)}>{label}</NavLink>)}
-      <a className="mobile-phone" href="tel:+74951234567"><Phone size={16}/> +7 (495) 123-45-67</a>
+      <a className="mobile-phone" href={`tel:${CONTACTS.phoneTel}`}><Phone size={16}/> {CONTACTS.phoneDisplay}</a>
     </nav>
     <div className="header-actions">
-      <a className="phone-link" href="tel:+74951234567"><Phone size={16}/><span>+7 (495) 123-45-67<small>Ежедневно: 08:00–23:00</small></span></a>
+      <a className="phone-link" href={`tel:${CONTACTS.phoneTel}`}><Phone size={16}/><span>{CONTACTS.phoneDisplay}<small>Ежедневно: 08:00–23:00</small></span></a>
       <Link className="button button-primary button-small" to="/booking"><CalendarDays size={16}/> Записаться</Link>
     </div>
   </header>;

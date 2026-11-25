@@ -5,3 +5,349 @@
 @media(max-width:900px){.site-header{height:70px}.mobile-menu{display:grid;place-items:center;margin-left:auto;width:42px;height:42px}.main-nav{display:none;position:absolute;left:0;right:0;top:70px;padding:18px 22px 24px;background:#101214;border-bottom:1px solid var(--line);align-items:stretch;flex-direction:column;gap:0}.main-nav.is-open{display:flex}.main-nav a{padding:12px 4px;border-bottom:1px solid #282b30;font-size:13px}.mobile-phone{display:flex!important;align-items:center;gap:8px;color:var(--orange)!important}.header-actions{display:none}.hero{min-height:510px}.booking-section{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.admin-shell{grid-template-columns:190px 1fr}.admin-main{padding:25px}}
 @media(max-width:620px){.brand b{font-size:16px}.brand-mark{width:38px;height:38px}.hero{min-height:570px;padding:60px 22px 105px}.hero:after{background:linear-gradient(90deg,#090a0cf5,#090a0c99);opacity:.25}.hero h1{font-size:47px;letter-spacing:-2.5px}.hero h2{font-size:21px}.hero-points{gap:13px}.hero-points span{font-size:11px}.hero-bottom{gap:13px;padding:13px 20px;flex-wrap:wrap}.hero-bottom span{font-size:10px}.hero-bottom svg{width:14px}.section{padding:52px 20px}.section-heading{align-items:start}.section-heading h2{font-size:29px}.service-grid{grid-template-columns:1fr 1fr;gap:10px}.service-image{height:105px}.service-card-body{padding:12px}.service-card h3{font-size:13px}.service-card p{font-size:10px;min-height:45px}.service-card strong{font-size:11px}.service-card-body>a{width:25px;height:25px;right:10px;bottom:10px}.benefit-grid{grid-template-columns:1fr 1fr}.benefit{padding:17px 14px}.benefit h3{font-size:13px}.benefit p{font-size:10px}.promo-banner{margin:0 20px;padding:25px;min-height:240px}.promo-wheel{width:100px;height:100px;border-width:10px}.promo-wheel:after{border-width:6px}.promo-banner h2{font-size:25px}.promo-banner p:not(.eyebrow){font-size:11px}.promo-banner .button{min-height:42px;font-size:11px;padding:0 13px}.form-grid{grid-template-columns:1fr}.full-field{grid-column:auto}.booking-form-card{padding:18px}.footer-grid{grid-template-columns:1fr 1fr;gap:25px 18px}.footer-bottom{flex-direction:column}.page-hero{padding:55px 22px}.page-hero h1{font-size:39px}.content-card-grid,.gallery-grid,.contact-layout{grid-template-columns:1fr}.gallery-tile{min-height:150px}.admin-shell{display:block}.admin-sidebar{padding:14px 18px;flex-direction:row;align-items:center;justify-content:space-between;border-right:0;border-bottom:1px solid var(--line)}.admin-sidebar .admin-brand{font-size:10px}.admin-side-active{padding:9px 11px;font-size:11px}.admin-logout{margin:0;padding:8px}.admin-main{padding:20px 14px}.admin-top h1{font-size:26px}.stats-grid{grid-template-columns:1fr 1fr;gap:9px}.stat-card{padding:14px}.stat-card b{font-size:25px}.admin-login{padding:24px}.price-row{font-size:11px;padding:14px}.booking-copy h2{font-size:30px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Локальные фотографии: общий слой и адаптивная обрезка */
+.hero{isolation:isolate;background:#090a0c}
+.hero-image{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.hero-photo{display:block;width:100%;height:100%;object-fit:cover;object-position:center 54%;opacity:.88}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,8,10,.97) 0%,rgba(7,8,10,.88) 34%,rgba(7,8,10,.42) 68%,rgba(7,8,10,.2) 100%);opacity:1;pointer-events:none}
+.hero-content{z-index:1}
+.hero-bottom{z-index:2}
+.service-image{height:158px;background:#17191c;position:relative;overflow:hidden}
+.service-image:before{display:none}
+.service-image>img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .45s ease;filter:brightness(.78) saturate(.88)}
+.service-card:hover .service-image>img{transform:scale(1.06);filter:brightness(.95) saturate(1)}
+.service-image:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(5,6,8,.55));pointer-events:none}
+.service-icon{z-index:1}
+.promo-visual{width:min(34%,330px);height:190px;flex:0 0 34%;border-radius:14px;overflow:hidden;border:1px solid #75400f;box-shadow:0 14px 38px #0008}
+.promo-visual img{display:block;width:100%;height:100%;object-fit:cover}
+.gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.gallery-tile{position:relative;display:block;min-height:0;height:230px;margin:0;padding:0;overflow:hidden;border:1px solid #393c41;border-radius:14px;background:#17191c}
+.gallery-tile img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .45s ease;filter:brightness(.8)}
+.gallery-tile:hover img{transform:scale(1.045);filter:brightness(1)}
+.gallery-tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:32px 17px 16px;color:#fff;font-weight:800;background:linear-gradient(transparent,rgba(0,0,0,.82));font-size:14px}
+@media(max-width:900px){.service-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero-photo{object-position:58% center}.promo-visual{height:160px}}
+@media(max-width:620px){.hero{isolation:isolate}.hero-photo{object-position:62% center;opacity:.66}.hero:after{background:linear-gradient(90deg,rgba(7,8,10,.96),rgba(7,8,10,.72));opacity:1}.service-grid{grid-template-columns:1fr 1fr}.service-image{height:112px}.promo-visual{width:105px;height:105px;flex-basis:105px;align-self:center}.gallery-grid{grid-template-columns:1fr 1fr;gap:10px}.gallery-tile{height:155px}.gallery-tile figcaption{font-size:11px;padding:25px 10px 10px}}
+.pricing-visual{height:190px;max-width:850px;margin:0 0 22px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.pricing-visual img{width:100%;height:100%;display:block;object-fit:cover;object-position:center 55%}
+.about-image-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:25px 0;max-width:1000px}
+.about-image-grid img{display:block;width:100%;height:240px;object-fit:cover;border:1px solid var(--line);border-radius:14px}
+@media(max-width:620px){.pricing-visual{height:135px}.about-image-grid{grid-template-columns:1fr}.about-image-grid img{height:190px}}
+
+
+/* Обновление интерфейса: выразительные заголовки разделов, фото и читаемая типографика */
+body{font-size:16px;line-height:1.65}
+.main-nav a{font-size:12px}
+.eyebrow{font-size:12px;letter-spacing:2.1px}
+.hero-points span,.hero-bottom span{font-size:14px}
+.section-heading h2,.booking-copy h2{line-height:1.15}
+.service-card h3{font-size:17px}.service-card p{font-size:13px;line-height:1.65;min-height:42px}.service-card strong{font-size:14px}
+.benefit-grid{align-items:stretch}
+.benefit{padding:0;overflow:hidden;display:flex;flex-direction:column;min-height:270px}
+.benefit>img{width:100%;height:128px;object-fit:cover;display:block;filter:brightness(.82) saturate(.9)}
+.benefit-copy{padding:17px 18px 20px;position:relative;flex:1}
+.benefit-copy>svg{width:24px;height:24px;color:var(--orange)}
+.benefit h3{font-size:17px;margin:8px 0 5px}
+.benefit p{font-size:13px;line-height:1.65;color:#c2c5c9}
+.page-hero{position:relative;isolation:isolate;min-height:260px;display:flex;align-items:center;overflow:hidden;background:#111315;padding:64px clamp(20px,6vw,90px)}
+.page-hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 48%;z-index:-2;opacity:.55}
+.page-hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,8,10,.97),rgba(7,8,10,.83) 48%,rgba(7,8,10,.42));}
+.page-hero-content{position:relative;max-width:850px}
+.page-hero h1{font-size:clamp(42px,5.4vw,66px);line-height:1.05;letter-spacing:-1.8px}
+.page-hero>div>p:last-child{max-width:720px;color:#e0e2e5;font-size:17px;line-height:1.7;margin:0}
+.page-content{padding-top:62px}
+.content-card-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.content-card{padding:0 0 22px;overflow:hidden}
+.content-card>svg,.content-card h3,.content-card p,.content-card strong,.content-card .text-link{margin-left:22px;margin-right:22px}
+.content-card>svg{margin-top:18px}
+.content-card h3{font-size:19px}
+.content-card p,.prose p{font-size:15px;line-height:1.8;color:#c0c3c8}
+.content-card strong{font-size:15px}
+.content-card-image{height:190px;overflow:hidden;margin:0 0 2px}
+.content-card-image img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.content-card:hover .content-card-image img{transform:scale(1.04)}
+.price-row{font-size:15px;padding:19px 22px}
+.price-head{font-size:14px}
+.pricing-visual{height:230px;max-width:850px}
+.pricing-visual img{object-position:center 48%;filter:brightness(.95);}
+.contact-layout{gap:22px}
+.contact-card h3{font-size:22px}
+.contact-card p{font-size:15px}
+.contact-subtitle{font-size:16px;margin:22px 0 12px}
+.contact-channels{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}
+.channel{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:8px 12px;border:1px solid #3b3e43;border-radius:10px;background:#171a1e;color:#f5f5f5;font-size:13px;font-weight:800}
+.channel svg{width:18px;height:18px}.channel.whatsapp svg{color:#35cf75}.channel.max b{display:grid;place-items:center;width:19px;height:19px;border-radius:6px;background:#2878ff;color:white;font-size:13px}.channel.telegram svg{color:#49a9e8}.channel.email svg{color:#ff9a2f}.channel.phone svg{color:#ff9a2f}.channel:hover{border-color:var(--orange);transform:translateY(-1px)}
+.footer-grid>div>p,.footer-grid>div>a:not(.brand){font-size:13px}
+.muted{font-size:14px}
+@media(max-width:900px){.benefit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.content-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.page-hero{min-height:230px}}
+@media(max-width:620px){.benefit-grid,.content-card-grid{grid-template-columns:1fr 1fr}.benefit{min-height:245px}.benefit>img{height:105px}.benefit-copy{padding:13px}.benefit h3{font-size:15px}.benefit p{font-size:12px}.page-hero{min-height:220px;padding:48px 22px}.page-hero h1{font-size:40px}.page-hero>div>p:last-child{font-size:15px}.content-card-image{height:125px}.content-card>svg,.content-card h3,.content-card p,.content-card strong,.content-card .text-link{margin-left:13px;margin-right:13px}.content-card h3{font-size:15px}.content-card p{font-size:12px}.content-card strong{font-size:13px}.pricing-visual{height:170px}.price-row{font-size:13px;padding:14px}.channel{font-size:11px;padding:7px 9px}.footer-grid>div>p,.footer-grid>div>a:not(.brand){font-size:12px}}
+
+/* Финальная корректировка читаемости, чёткости фотографий и контактных кнопок */
+:root { font-smooth: auto; text-rendering: auto; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { font-size: 17px; line-height: 1.72; }
+.main-nav a { font-size: 13px; }
+.hero-points span, .hero-bottom span { font-size: 15px; }
+.service-card h3, .benefit h3 { font-size: 18px; }
+.service-card p, .benefit p { font-size: 14px; line-height: 1.75; }
+.muted, .content-card p, .prose p { font-size: 16px; line-height: 1.8; }
+.lead-form label { font-size: 14px; }
+.lead-form input, .lead-form select, .lead-form textarea { font-size: 16px; min-height: 50px; }
+.consent { font-size: 13px !important; }
+.form-note { font-size: 12px; }
+.page-hero-image { opacity: .94; filter: none; transform: none; image-rendering: auto; }
+.page-hero:after { background: linear-gradient(90deg, rgba(7,8,10,.88) 0%, rgba(7,8,10,.68) 46%, rgba(7,8,10,.26) 100%); }
+.page-hero h1 { text-shadow: 0 2px 12px rgba(0,0,0,.55); }
+.page-hero>div>p:last-child { color: #f0f1f3; text-shadow: 0 1px 8px rgba(0,0,0,.65); }
+.hero-photo { opacity: 1; filter: none; image-rendering: auto; }
+.hero:after { background: linear-gradient(90deg, rgba(7,8,10,.90) 0%, rgba(7,8,10,.72) 40%, rgba(7,8,10,.24) 100%); }
+.channel { min-height: 46px; font-size: 14px; }
+.channel.max { gap: 8px; }
+.channel.max img { display: block; width: 23px; height: 23px; object-fit: contain; border-radius: 6px; }
+.channel.email { cursor: pointer; }
+.channel:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+@media (max-width: 620px) {
+  body { font-size: 15px; }
+  .main-nav a { font-size: 13px; }
+  .hero-points span, .hero-bottom span { font-size: 12px; }
+  .service-card h3 { font-size: 15px; }
+  .service-card p { font-size: 12px; line-height: 1.65; }
+  .benefit h3 { font-size: 16px; }
+  .benefit p { font-size: 12px; line-height: 1.65; }
+  .muted, .content-card p, .prose p { font-size: 14px; line-height: 1.7; }
+  .page-hero-image { opacity: .88; object-position: center 48%; }
+  .page-hero:after { background: linear-gradient(90deg, rgba(7,8,10,.88), rgba(7,8,10,.60)); }
+  .page-hero>div>p:last-child { font-size: 15px; }
+  .lead-form label { font-size: 13px; }
+  .lead-form input, .lead-form select, .lead-form textarea { font-size: 16px; }
+  .channel { font-size: 12px; }
+}
+
+/* Финальная типографика и единое кадрирование изображений (v4) */
+body {
+  font-size: 18px;
+  line-height: 1.78;
+}
+.section-heading h2,
+.booking-copy h2 {
+  font-size: clamp(34px, 4.2vw, 48px);
+  line-height: 1.16;
+  letter-spacing: -1.1px;
+}
+.eyebrow { font-size: 13px; }
+.text-link { font-size: 15px; }
+.hero-points span, .hero-bottom span { font-size: 16px; }
+.hero h2 { font-size: clamp(23px, 2.5vw, 32px); }
+.button { font-size: 15px; }
+
+/* Карточки услуг: фото полностью заполняют контейнер без пустых боковых полей. */
+.service-image,
+.content-card-image,
+.gallery-tile,
+.pricing-visual,
+.promo-visual,
+.about-image-grid img,
+.benefit > img {
+  background: #141619;
+}
+.service-image { height: 190px; }
+.service-image > img,
+.content-card-image img,
+.gallery-tile img,
+.pricing-visual img,
+.promo-visual img,
+.about-image-grid img,
+.benefit > img,
+.page-hero-image,
+.hero-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  max-width: none;
+  vertical-align: middle;
+}
+/* У исходных фотографий карточек есть тёмная рамка по краям — кадр слегка приближен. */
+.service-image > img { transform: scale(1.09); }
+.service-card:hover .service-image > img { transform: scale(1.14); }
+.content-card-image { height: 245px; }
+.content-card-image img { transform: scale(1.075); }
+.content-card:hover .content-card-image img { transform: scale(1.12); }
+.gallery-tile { height: 260px; }
+.pricing-visual { height: 250px; }
+.about-image-grid img { height: 270px; }
+.benefit > img { height: 150px; flex: 0 0 150px; }
+
+/* Текст карточек и содержимого страниц */
+.service-card h3, .benefit h3 { font-size: 20px; line-height: 1.3; }
+.service-card p, .benefit p { font-size: 15px; line-height: 1.72; }
+.service-card strong { font-size: 16px; }
+.content-card h3 { font-size: 22px; line-height: 1.3; }
+.content-card p, .prose p { font-size: 17px; line-height: 1.82; }
+.content-card strong { font-size: 17px; }
+.page-hero h1 { font-size: clamp(46px, 5.5vw, 70px); line-height: 1.06; }
+.page-hero > div > p:last-child { font-size: 19px; line-height: 1.78; }
+.price-row { font-size: 17px; }
+.price-head { font-size: 16px; }
+.feature-list p { font-size: 18px; line-height: 1.65; }
+.notice { font-size: 15px; line-height: 1.7; }
+.contact-card p { font-size: 17px; line-height: 1.75; }
+.contact-card h3 { font-size: 25px; }
+.contact-subtitle { font-size: 19px; }
+.muted { font-size: 16px; line-height: 1.8; }
+.footer-grid > div > p,
+.footer-grid > div > a:not(.brand) { font-size: 14px; line-height: 1.6; }
+.footer h4 { font-size: 16px; }
+
+@media (max-width: 900px) {
+  .service-image { height: 175px; }
+  .content-card-image { height: 225px; }
+  .gallery-tile { height: 225px; }
+  .page-hero h1 { font-size: clamp(42px, 7vw, 60px); }
+}
+
+@media (max-width: 620px) {
+  body { font-size: 17px; line-height: 1.72; }
+  .section { padding: 58px 20px; }
+  .section-heading h2, .booking-copy h2 { font-size: 34px; }
+  .hero h2 { font-size: 22px; }
+  .hero-points span { font-size: 14px; }
+  .hero-bottom span { font-size: 12px; }
+  .service-grid { gap: 12px; }
+  .service-image { height: 145px; }
+  .service-card-body { padding: 13px 12px 16px; }
+  .service-card h3 { font-size: 16px; line-height: 1.35; }
+  .service-card p { font-size: 13px; line-height: 1.6; min-height: 58px; }
+  .service-card strong { font-size: 13px; }
+  .benefit { min-height: 0; }
+  .benefit > img { height: 118px; flex-basis: 118px; }
+  .benefit-copy { padding: 14px 13px 16px; }
+  .benefit h3 { font-size: 16px; }
+  .benefit p { font-size: 13px; line-height: 1.6; }
+  .page-hero { min-height: 235px; padding: 48px 22px; }
+  .page-hero h1 { font-size: 42px; line-height: 1.08; }
+  .page-hero > div > p:last-child { font-size: 17px; line-height: 1.65; }
+  .content-card-grid { grid-template-columns: 1fr; }
+  .content-card-image { height: 210px; }
+  .content-card h3 { font-size: 21px; }
+  .content-card p, .prose p { font-size: 16px; line-height: 1.75; }
+  .content-card strong { font-size: 16px; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-tile { height: 170px; }
+  .pricing-visual { height: 190px; }
+  .price-row { font-size: 15px; padding: 15px; gap: 15px; }
+  .price-head { font-size: 14px; }
+  .feature-list p { font-size: 16px; }
+  .contact-card p { font-size: 16px; }
+  .footer-grid > div > p,
+  .footer-grid > div > a:not(.brand) { font-size: 13px; }
+  .button { font-size: 14px; }
+}
+
+/* Только верхнее меню: увеличенный и более контрастный текст пунктов навигации. */
+.site-header .main-nav a:not(.mobile-phone) {
+  font-size: clamp(14px, 1.1vw, 16px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: #f0f1f3;
+  -webkit-font-smoothing: auto;
+  text-rendering: optimizeLegibility;
+}
+.site-header .main-nav a:not(.mobile-phone):hover,
+.site-header .main-nav a:not(.mobile-phone).active {
+  color: var(--orange);
+}
+@media (max-width: 1200px) and (min-width: 901px) {
+  .site-header .main-nav { gap: 8px; }
+  .site-header .main-nav a:not(.mobile-phone) { font-size: 14px; }
+}
+@media (max-width: 900px) {
+  .site-header .main-nav a:not(.mobile-phone) {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.4;
+    padding: 14px 4px;
+  }
+}
+
+
+/* Карточки блока «Почему выбирают нас?» — явные подписи к каждой фотографии. */
+.benefits-section .benefit-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 20px;
+}
+.benefits-section .benefit {
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #34383e;
+  border-radius: 16px;
+  background: linear-gradient(155deg, #1b1e22 0%, #111316 100%);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .16);
+}
+.benefits-section .benefit > img {
+  display: block;
+  width: 100%;
+  height: 190px;
+  min-height: 190px;
+  flex: 0 0 190px;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(.92) saturate(.96);
+}
+.benefits-section .benefit-copy {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: 22px 22px 24px;
+}
+.benefits-section .benefit-icon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.benefits-section .benefit-icon svg {
+  display: block;
+  width: 27px;
+  height: 27px;
+  color: var(--orange);
+  stroke-width: 2;
+}
+.benefits-section .benefit-icon span {
+  color: #8b8f96;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+.benefits-section .benefit h3 {
+  margin: 0 0 9px;
+  color: #fff;
+  font-size: 21px;
+  line-height: 1.3;
+  letter-spacing: -.25px;
+}
+.benefits-section .benefit p {
+  margin: 0;
+  color: #c8cbd0;
+  font-size: 16px;
+  line-height: 1.72;
+}
+@media (max-width: 1000px) {
+  .benefits-section .benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .benefits-section .benefit-grid { grid-template-columns: 1fr; gap: 15px; }
+  .benefits-section .benefit > img { height: 190px; min-height: 190px; flex-basis: 190px; }
+  .benefits-section .benefit-copy { padding: 18px 18px 20px; }
+  .benefits-section .benefit h3 { font-size: 19px; }
+  .benefits-section .benefit p { font-size: 15px; line-height: 1.68; }
+}

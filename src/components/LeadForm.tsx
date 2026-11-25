@@ -1,12 +1,28 @@
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { sendLead } from "../lib/api";
+import { useSearchParams } from "react-router-dom";
 import { LoaderCircle, Send, ShieldCheck } from "lucide-react";
+
+const SERVICE_OPTIONS = [
+  "Шиномонтаж",
+  "Балансировка колёс",
+  "Ремонт шин",
+  "Сезонная замена резины",
+  "Хранение шин",
+  "Другое"
+] as const;
+type ServiceOption = (typeof SERVICE_OPTIONS)[number];
 
 export default function LeadForm({ compact = false }: { compact?: boolean }) {
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState("");
+  const [searchParams] = useSearchParams();
+  const requestedService = searchParams.get("service");
+  const defaultService: ServiceOption = SERVICE_OPTIONS.includes(requestedService as ServiceOption)
+    ? (requestedService as ServiceOption)
+    : "Шиномонтаж";
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -34,8 +50,8 @@ export default function LeadForm({ compact = false }: { compact?: boolean }) {
   return <form className={compact ? "lead-form compact" : "lead-form"} onSubmit={submit}>
     <div className="form-grid">
       <label>Ваше имя<input name="name" placeholder="Как к вам обращаться" required minLength={2} maxLength={80}/></label>
-      <label>Телефон<input name="phone" type="tel" placeholder="+7 (___) ___-__-__" required minLength={7} maxLength={24}/></label>
-      <label>Услуга<select name="service" defaultValue="Шиномонтаж"><option>Шиномонтаж</option><option>Балансировка колёс</option><option>Ремонт шин</option><option>Сезонная замена резины</option><option>Хранение шин</option><option>Другое</option></select></label>
+      <label>Телефон<input name="phone" type="tel" placeholder="+7 999 999 99 99" inputMode="tel" autoComplete="tel" pattern="\+?[0-9() .-]{10,23}" title="Например: +7 999 999 99 99" required minLength={10} maxLength={23}/></label>
+      <label>Услуга<select name="service" defaultValue={defaultService}>{SERVICE_OPTIONS.map((service) => <option key={service}>{service}</option>)}</select></label>
       <label>Автомобиль<input name="car" placeholder="Например, Kia Sportage" maxLength={100}/></label>
       <label>Размер колёс<select name="wheelSize" defaultValue=""><option value="">Не знаю / уточню</option>{Array.from({length: 13}, (_, i) => <option key={i}>R{i + 13}</option>)}</select></label>
       <label>Желаемая дата<input name="preferredDate" type="date" min={new Date().toISOString().slice(0,10)}/></label>
